@@ -1,9 +1,15 @@
 package com.gef_biotag.Biotag.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.gef_biotag.Biotag.dto.DadosAtualizadoPaciente;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -26,26 +32,26 @@ public class Paciente {
     private int idade;
     private String endereco;
     
-    // @ManyToOne
-    // @JsonBackReference
-    // @JoinColumn(name = "abrigo_id", nullable = false)
-    // private Abrigo abrigo;
+     @ManyToOne
+     @JsonBackReference
+     @JoinColumn(name = "abrigo_id", nullable = false)
+     private Abrigo abrigo;
 
-    // @OneToOne
-    // @JsonBackReference
-    // @JoinColumn(name = "pulseira_id", nullable = false)
-    // private Pulseira pulseira;
+     @OneToOne
+     @JsonBackReference
+     @JoinColumn(name = "pulseira_id", nullable = false)
+     private Pulseira pulseira;
 
-    // public void atualizarInformacoesPaciente(DadosAtualizadoPaciente dadosPaciente) {
-    //     if (dadosPaciente.nome() != null && !dadosPaciente.nome().isBlank()) {
-    //         this.nome = dadosPaciente.nome();
-    //     }
-    //     if (dadosPaciente.idade() != null) {
-    //         this.idade = dadosPaciente.idade();
-    //     }
-    //     if (dadosPaciente.endereco() != null && !dadosPaciente.endereco().isBlank()) {
-    //         this.endereco = dadosPaciente.endereco();
-    //     }
-    // }
+     public void atualizarInformacoesPaciente(DadosAtualizadoPaciente dadosPaciente) {
+         if (dadosPaciente.nome() != null && !dadosPaciente.nome().isBlank()) {
+             this.nome = dadosPaciente.nome();
+         }
+         if (dadosPaciente.idade() != null) {
+             this.idade = dadosPaciente.idade();
+         }
+         if (dadosPaciente.endereco() != null && !dadosPaciente.endereco().isBlank()) {
+             this.endereco = dadosPaciente.endereco();
+         }
+     }
 
 }
