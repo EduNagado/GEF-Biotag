@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.token.TokenService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +24,7 @@ import com.gef_biotag.Biotag.model.Abrigo;
 import com.gef_biotag.Biotag.model.Funcionario;
 import com.gef_biotag.Biotag.repository.AbrigoRepository;
 import com.gef_biotag.Biotag.repository.FuncionarioRepository;
+import com.gef_biotag.Biotag.service.TokenService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.persistence.EntityNotFoundException;

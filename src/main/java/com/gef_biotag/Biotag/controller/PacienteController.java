@@ -1,9 +1,9 @@
 package com.gef_biotag.Biotag.controller;
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Page;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +25,7 @@ import com.gef_biotag.Biotag.model.Paciente;
 import com.gef_biotag.Biotag.model.Pulseira;
 import com.gef_biotag.Biotag.repository.AbrigoRepository;
 import com.gef_biotag.Biotag.repository.PacienteRepository;
+import com.gef_biotag.Biotag.service.PulseiraService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -44,7 +45,7 @@ public class PacienteController {
     private PacienteRepository pacienteRepository;
 
     @Autowired
-    private pulseiraService pulseiraService;
+    private PulseiraService pulseiraService;
 
     @PostMapping
     @Operation(summary = "Cadastrar Paciente")
