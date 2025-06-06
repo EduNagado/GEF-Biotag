@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gef_biotag.Biotag.dto.DadosAtualizadoFuncionario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -48,20 +49,20 @@ public class Funcionario implements UserDetails {
     @JsonIgnore
     private Abrigo abrigo;
 
-    // public void atualizarInformacoes(DadosAtualizadoFuncionario dados) {
-    //     if (dados.nome() != null && !dados.nome().isBlank()) {
-    //         this.nome = dados.nome();
-    //     }
-    //     if (dados.cargo() != null) {
-    //         this.cargo = dados.cargo();
-    //     }
-    //     if (dados.password() != null && !dados.password().isBlank()) {
-    //         this.password = dados.password();
-    //     }
-    //     if (dados.email() != null && !dados.email().isBlank()) {
-    //         this.email = dados.email();
-    //     }
-    // } 
+     public void atualizarInformacoes(DadosAtualizadoFuncionario dados) {
+         if (dados.nome() != null && !dados.nome().isBlank()) {
+             this.nome = dados.nome();
+         }
+         if (dados.cargo() != null) {
+             this.cargo = dados.cargo();
+         }
+         if (dados.password() != null && !dados.password().isBlank()) {
+             this.password = dados.password();
+         }
+         if (dados.email() != null && !dados.email().isBlank()) {
+             this.email = dados.email();
+         }
+     } 
 
 
     @Override
