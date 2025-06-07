@@ -26,8 +26,8 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("Api GEF-GS")
-                    .withSubject(funcionario.getEmail())
+                    .withIssuer("apisecurity")
+                    .withSubject(funcionario.getUsername())
                     .withExpiresAt(dataExpiracao())
                     .sign(algorithm);
         } catch (JWTCreationException exception) {

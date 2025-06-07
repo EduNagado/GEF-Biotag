@@ -49,18 +49,18 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.PUT, "/funcionario/**").permitAll() 
                 .requestMatchers(HttpMethod.DELETE, "/funcionario/**").permitAll() 
                 .requestMatchers(HttpMethod.POST, "/paciente/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/paciente/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/paciente/**").hasRole("ADMINASTRADOR")
                 .requestMatchers(HttpMethod.PUT, "/paciente/**").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/paciente/**").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
 
                 // 🔐 Somente ADMINISTRADOR pode acessar essas rotas:
-                .requestMatchers(HttpMethod.POST, "/abrigos/**").hasRole("ADMINISTRADOR")
-                .requestMatchers(HttpMethod.GET, "/abrigos/**").hasRole("ADMINISTRADOR")
-                // .requestMatchers(HttpMethod.POST, "/**").hasRole("ADMINISTRADOR")
-                // .requestMatchers(HttpMethod.PUT, "/**").hasRole("ADMINISTRADOR")
-                // .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMINISTRADOR")
+                .requestMatchers(HttpMethod.POST, "/abrigos/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/abrigos/**").permitAll()
+                // .requestMatchers(HttpMethod.POST, "/**").hasRole("ADMINASTRADOR")
+                // .requestMatchers(HttpMethod.PUT, "/**").hasRole("ADMINASTRADOR")
+                // .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMINASTRADOR")
                 
                 
                 .anyRequest().authenticated()

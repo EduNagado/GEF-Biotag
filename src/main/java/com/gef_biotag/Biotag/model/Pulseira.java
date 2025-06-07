@@ -24,7 +24,7 @@ public class Pulseira {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pulseira_seq")
     @SequenceGenerator(name = "pulseira_seq", sequenceName = "SEQ_PULSEIRA", allocationSize = 1)
     @Column(name = "ID_PULSEIRA") 
-    private Long PulseiraId;
+    private Long pulseiraId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "NFC_ID", unique = true)

@@ -29,17 +29,17 @@ public class Paciente {
     private long id;
 
     private String nome;
-    private int idade;
+    private Integer idade;
     private String endereco;
     
      @ManyToOne
      @JsonBackReference
-     @JoinColumn(name = "abrigo_id", nullable = false)
+     @JoinColumn(name = "ABRIGO_ID", nullable = false)
      private Abrigo abrigo;
 
      @OneToOne
      @JsonBackReference
-     @JoinColumn(name = "pulseira_id", nullable = false)
+     @JoinColumn(name = "PULSEIRA_ID", nullable = false)
      private Pulseira pulseira;
 
      public void atualizarInformacoesPaciente(DadosAtualizadoPaciente dadosPaciente) {

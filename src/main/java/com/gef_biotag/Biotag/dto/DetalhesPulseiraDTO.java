@@ -3,7 +3,7 @@ package com.gef_biotag.Biotag.dto;
 import java.time.LocalDateTime;
 
 public record DetalhesPulseiraDTO(
-    Long idPulseira,
+    Long pulseiraId,
     String nomePaciente,
     Integer idade,
     String endereco,

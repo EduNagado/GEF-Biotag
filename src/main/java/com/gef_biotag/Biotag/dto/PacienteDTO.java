@@ -7,7 +7,8 @@ public record PacienteDTO(
     @NotBlank(message = "campo obrigatório")
     String nome,
 
-    int idade,
+    
+    Integer idade,
 
     @NotBlank(message = "campo obrigatório")
     String endereco,
