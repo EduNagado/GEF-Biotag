@@ -79,10 +79,16 @@ gef-biotag/
 ```
 ## 🚀 Como Executar o Projeto 
 
+
 ###  Clone o Repositório
 ```bash
 git clone https://github.com/EduNagado/GEF-Biotag.git
 ```
+###  URL
+```http
+ http://localhost:8080/swagger-ui/index.html#/
+```
+
 ## ☁️ Como Executar o Container
 
 ### Execute 
