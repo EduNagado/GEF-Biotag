@@ -47,10 +47,10 @@ public class PacienteController {
     @Autowired
     private PulseiraService pulseiraService;
 
+
     @PostMapping
     @Operation(summary = "Cadastrar Paciente")
     public ResponseEntity<Paciente> create(@RequestBody @Valid PacienteDTO dto) {
-
         Abrigo abrigo = abrigoRepository.findByNome(dto.nomeAbrigo())
             .orElseThrow(() -> new IllegalArgumentException("Abrigo não encontrado"));
 
@@ -64,7 +64,6 @@ public class PacienteController {
         paciente.setPulseira(pulseira);
 
         Paciente pacienteSalvo = pacienteRepository.save(paciente);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(pacienteSalvo);
     }
 
@@ -84,6 +83,7 @@ public class PacienteController {
     }
     
     @GetMapping("/{id}")
+    @Operation(summary = "Informações detalhadas do paciente por ID")
     public ResponseEntity<DadosListandoPaciente> buscarPorId(@PathVariable Long id) {
         Paciente paciente = pacienteRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Paciente não encontrado com ID: " + id));

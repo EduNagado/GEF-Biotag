@@ -46,21 +46,21 @@ public class SecurityConfiguration {
             ).permitAll()
 
                 .requestMatchers(HttpMethod.POST, "/funcionario/**").permitAll()
-                .requestMatchers(HttpMethod.PUT, "/funcionario/**").permitAll() 
-                .requestMatchers(HttpMethod.DELETE, "/funcionario/**").permitAll() 
-                .requestMatchers(HttpMethod.POST, "/paciente/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/paciente/**").hasRole("ADMINASTRADOR")
-                .requestMatchers(HttpMethod.PUT, "/paciente/**").permitAll()
-                .requestMatchers(HttpMethod.DELETE, "/paciente/**").permitAll()
+                .requestMatchers(HttpMethod.PUT, "/funcionario/**").hasRole("ADMINASTRADOR")
+                .requestMatchers(HttpMethod.DELETE, "/funcionario/**").hasRole("ADMINASTRADOR")
+                .requestMatchers(HttpMethod.POST, "/paciente/**").hasAnyRole("ADMINASTRADOR", "FUNCIONARIO")
+                .requestMatchers(HttpMethod.GET, "/paciente/**").hasAnyRole("ADMINASTRADOR", "FUNCIONARIO")
+                .requestMatchers(HttpMethod.PUT, "/paciente/**").hasRole("ADMINASTRADOR")
+                .requestMatchers(HttpMethod.DELETE, "/paciente/**").hasRole("ADMINASTRADOR")
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
 
                 // 🔐 Somente ADMINISTRADOR pode acessar essas rotas:
                 .requestMatchers(HttpMethod.POST, "/abrigos/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/abrigos/**").permitAll()
-                // .requestMatchers(HttpMethod.POST, "/**").hasRole("ADMINASTRADOR")
-                // .requestMatchers(HttpMethod.PUT, "/**").hasRole("ADMINASTRADOR")
-                // .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMINASTRADOR")
+                 .requestMatchers(HttpMethod.POST, "/**").hasRole("ADMINASTRADOR")
+                 .requestMatchers(HttpMethod.PUT, "/**").hasRole("ADMINASTRADOR")
+                 .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMINASTRADOR")
                 
                 
                 .anyRequest().authenticated()

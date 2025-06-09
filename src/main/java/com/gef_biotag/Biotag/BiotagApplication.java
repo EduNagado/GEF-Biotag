@@ -17,4 +17,5 @@ public class BiotagApplication {
 		SpringApplication.run(BiotagApplication.class, args);
 	}
 
+	//http://localhost:8080/swagger-ui/index.html#/
 }

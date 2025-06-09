@@ -6,10 +6,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gef_biotag.Biotag.dto.AbrigoDTO;
@@ -17,7 +18,6 @@ import com.gef_biotag.Biotag.model.Abrigo;
 import com.gef_biotag.Biotag.repository.AbrigoRepository;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,19 +29,21 @@ public class AbrigoController {
 
     @Autowired
     private AbrigoRepository abrigoRepository;
-    
+     
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Cadastra um novo abrigo")
-    public ResponseEntity<Abrigo> create(@RequestBody @Valid AbrigoDTO dto) {
-        log.info("Cadastrando abrigo: {}", dto.nome());
+    public Abrigo create(@RequestBody @Valid AbrigoDTO dto) {
+        
 
         Abrigo abrigo = new Abrigo();
         abrigo.setNome(dto.nome());
         abrigo.setEndereco(dto.endereco());
 
-        Abrigo abrigoSalvo = abrigoRepository.save(abrigo);
-        return ResponseEntity.status(HttpStatus.CREATED).body(abrigoSalvo);
+        return abrigoRepository.save(abrigo);
     }
+
+
 
     @GetMapping
     @Operation(summary = "Lista abrigos com paginação")
